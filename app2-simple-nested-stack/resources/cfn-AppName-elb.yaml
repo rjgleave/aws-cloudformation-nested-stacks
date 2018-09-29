@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Nested (child) template for a simple load balancer
+Parameters:   # as a nested stack, these parameters will be passed in from the parent stack
+  VPC:
+    Type: 'AWS::EC2::VPC::Id'
+    Description: VPC for the load balancer.
+  PublicSubnet1:
+    Type: 'AWS::EC2::Subnet::Id'
+    Description: First public subnet.
+  PublicSubnet2:
+    Type: 'AWS::EC2::Subnet::Id'
+    Description: Second public subnet.
+Resources:
+  ElasticLoadBalancer:
+    Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
+    Properties:
+      Name: Load-Balancer
+      Scheme: internet-facing
+      Subnets:
+        - !Ref PublicSubnet1
+        - !Ref PublicSubnet2
+      Tags:
+        - Key: Name
+          Value: CloudFormation Load Balancer
+Outputs:
+  LoadBalancerDNS:
+    Description: Public DNS For Load Balancer
+    Value: !GetAtt 
+      - ElasticLoadBalancer
+      - DNSName
+  LoadBalancerHostedZoneID:
+    Description: Canonical Hosted Zone ID of load balancer.
+    Value: !GetAtt 
+      - ElasticLoadBalancer
+      - CanonicalHostedZoneID
