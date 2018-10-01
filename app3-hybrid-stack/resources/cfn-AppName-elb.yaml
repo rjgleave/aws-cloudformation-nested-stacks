@@ -1,15 +1,16 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: Nested (child) template for a simple load balancer
 Parameters:   # as a nested stack, these parameters will be passed in from the parent stack
-  VPC:
-    Type: 'AWS::EC2::VPC::Id'
-    Description: VPC for the load balancer.
-  PublicSubnet1:
-    Type: 'AWS::EC2::Subnet::Id'
-    Description: First public subnet.
-  PublicSubnet2:
-    Type: 'AWS::EC2::Subnet::Id'
-    Description: Second public subnet.
+  NetworkStackName:
+    Description: >-
+      Name of an active CloudFormation stack that contains the networking
+      resources, such as the subnet and security group, that will be used in
+      this stack.
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: shared-network-double-subnet
 Resources:
   ElasticLoadBalancer:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
@@ -17,8 +18,10 @@ Resources:
       Name: Load-Balancer
       Scheme: internet-facing
       Subnets:
-        - !Ref PublicSubnet1
-        - !Ref PublicSubnet2
+        - !ImportValue 
+            'Fn::Sub': '${NetworkStackName}-Subnet1ID'
+        - !ImportValue 
+            'Fn::Sub': '${NetworkStackName}-Subnet2ID'
       Tags:
         - Key: Name
           Value: CloudFormation Load Balancer
