@@ -13,21 +13,21 @@ Naming Conventions
     * my-web-app (example product/application folder)
     * resources (example sub-folder for cloudformation resources)
 * Templates
-..* All cloudformation includes the prefix – ‘cf’  (e.g. cf)
-..* Use hyphens to separate words, names and terms (e.g. cf-)
-..* For products, include the application name in CamelCase (e.g  cf-myWebApp-)
-..* Differentiate root templates by the identifier ‘main’  (e.g. cf-myWebApp-main.yaml)
-..* Nested resources include the AWS resource in lower case (e.g. cf-myWebApp-rds.yaml)
-..* Nested resources may include added details  (e.g. cf-myWebApp-rds-mysql.yaml)
-..* Shared resources should include the name ‘shared’ (e.g. cf-shared-subnet-public.yaml) 
+  * All cloudformation includes the prefix – ‘cf’  (e.g. cf)
+  * Use hyphens to separate words, names and terms (e.g. cf-)
+  * For products, include the application name in CamelCase (e.g  cf-myWebApp-)
+  * Differentiate root templates by the identifier ‘main’  (e.g. cf-myWebApp-main.yaml)
+  * Nested resources include the AWS resource in lower case (e.g. cf-myWebApp-rds.yaml)
+  * Nested resources may include added details  (e.g. cf-myWebApp-rds-mysql.yaml)
+  * Shared resources should include the name ‘shared’ (e.g. cf-shared-subnet-public.yaml) 
 
 Always try to adopt a component-based approach to building cloudformation stacks.   This will provide many benefits, such as feature isolation and will also promote reusability and ease of maintenance.
 
 The two main approaches for component based assembly are:
 1. Cross-stack Resource Sharing – 
-..* good for cases where a resource should be defined once and consumed by other resources which are dependent on it.
-..* Good examples are networking resources for a given architecture – e.g. vpc, subnet, security group.   
-..* Exposed properties are exported from the component stack and imported into the consuming stack. 
+    * good for cases where a resource should be defined once and consumed by other resources which are dependent on it.
+    * Good examples are networking resources for a given architecture – e.g. vpc, subnet, security group.   
+    * Exposed properties are exported from the component stack and imported into the consuming stack. 
 ..* Cross-stack resource sharing is a good practice, but should be used judiciously, as it creates tight-coupling between the component stack and those stacks which are dependent on it.  Component stacks cannot be deleted or changed without considering impacts to dependent stacks. 
 
 2. Nested Stacks
