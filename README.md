@@ -28,20 +28,14 @@ The two main approaches for component based assembly are:
     * good for cases where a resource should be defined once and consumed by other resources which are dependent on it.
     * Good examples are networking resources for a given architecture – e.g. vpc, subnet, security group.   
     * Exposed properties are exported from the component stack and imported into the consuming stack. 
-..* Cross-stack resource sharing is a good practice, but should be used judiciously, as it creates tight-coupling between the component stack and those stacks which are dependent on it.  Component stacks cannot be deleted or changed without considering impacts to dependent stacks. 
+    * Cross-stack resource sharing is a good practice, but should be used judiciously, as it creates tight-coupling between the component stack and those stacks which are dependent on it.  Component stacks cannot be deleted or changed without considering impacts to dependent stacks. 
 
 2. Nested Stacks
-..* In this case, only the definition is reused, not the actual instantiated resource object.
-..* A root stack will reference the nested (child) stack, passing it the required parameters and optionally exposing outputs at the root level.
-..* This is creates a loosely-coupled relationship between the root stack and nested child stacks.   This is good, allowing patterns to be reused and still customized as needed.
-..* When a root stack templates is built, it first builds all nested child stacks to which it refers.    All changes to child stacks should be rebuilt from the root stack down.
-NOTE:  in both of the cases above the component resource consists of a stand-alone stack, which can be built and used independently if desired.  
+    * In this case, only the definition is reused, not the actual instantiated resource object.
+    * A root stack will reference the nested (child) stack, passing it the required parameters and optionally exposing outputs at the root level.
+    * This is creates a loosely-coupled relationship between the root stack and nested child stacks.   This is good, allowing patterns to be reused and still customized as needed.
+    * When a root stack templates is built, it first builds all nested child stacks to which it refers.    All changes to child stacks should be rebuilt from the root stack down.
+
+    NOTE:  in both of the cases above the component resource consists of a stand-alone stack, which can be built and used independently if desired.  
 
 ![Component Stack Types](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/nested-stacks.png)
-
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
