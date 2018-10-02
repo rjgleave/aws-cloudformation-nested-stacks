@@ -38,3 +38,10 @@ The two main approaches for component based assembly are:
 NOTE:  in both of the cases above the component resource consists of a stand-alone stack, which can be built and used independently if desired.  
 
 ![Component Stack Types](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/nested-stacks.png)
+
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
