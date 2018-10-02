@@ -50,4 +50,4 @@ Steps for Implementing Nested Stacks:
 
 	![Building the Root Stack](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/root-stack-build-screen.png)
  
-	Notice how the resources folder contains the nested stack
+

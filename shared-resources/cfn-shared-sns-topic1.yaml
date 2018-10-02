@@ -37,16 +37,11 @@ Outputs:
     Description: ARN of newly created SNS Topic
     Value: !Ref SNSTopic
     Export:   # exporting this value so it can be shared
-      Name: !Sub '${AWS::StackName}-VPCID'
+      Name: !Sub '${AWS::StackName}-TopicARN'
   QueueName:
     Description: Name of newly created SNS Topic
     Value: !GetAtt 
       - SNSTopic
       - TopicName
     Export:   # exporting this value so it can be shared
-      Name: !Sub '${AWS::StackName}-VPCID'
-  VPCId:
-    Description: VPC ID
-    Value: !Ref VPC
-    Export:   # exporting this value so it can be shared
-      Name: !Sub '${AWS::StackName}-VPCID'
+      Name: !Sub '${AWS::StackName}-QueueName'
