@@ -1,6 +1,12 @@
 # Cloudformation Nested Stack Examples
 
-This project contains some ideas on naming conventions and how to organize cloud formation nested stacks in a reasonable folder structure.
+This project contains some suggestions about naming conventions and how to organize cloud formation nested stacks in a reasonable folder structure.   
+
+This repo depicts a prototypical folder structure for 3 sample applications and a set of shared services to support them.   It does not attempt to represent a fully-baked application folder structure for something complex like a NodeJs solution.   It only represents the organization of the Cloudformation templates.
+
+The stacks represented here have been tested and do build successfully, however they represent bare-bones implementations of services, just to illustrate the principles of component-based stack composition.
+
+Style Guidelines displayed by this repo include the following: 
 
 Naming Conventions
 * Folder names
