@@ -43,7 +43,10 @@ Steps for Implementing Nested Stacks:
 
 	![Root Stack Outputs](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/root-stack-output-definition.png)
  
-	* Build the root stack from the root template.   It will automatically build any nested stacks first.   If any of them fail, the root stack will fail.    Once the nested stacks are built, the root stack is built.    In the example below you can see how nested stacks are identified differently than the root stack on the Cloudformation Build Screen.
+	* Build the root stack from the root template.   
+		* It will automatically build any nested stacks first.   If any of them fail, the root stack will fail.    
+		* Once the nested stacks are built, the root stack is built.    
+		* In the example below you can see how nested stacks are displayed differently than the root stack on the Cloudformation Build Screen.
 
 	![Building the Root Stack](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/root-stack-build-screen.png)
  
