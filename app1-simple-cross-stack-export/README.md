@@ -1,5 +1,5 @@
 # Simple Example of Cross-stack Resources Sharing
-some ideas on naming conventions and how to organize cloud formation nested stacks in a folder structure
+Cross-account sharing allows an instantiated stack to be consumed by other stacks.
 
 Cross-stack Resource Sharing Steps:
 1.	Identify a resource which should be shared as a component for other stacks to consume.
