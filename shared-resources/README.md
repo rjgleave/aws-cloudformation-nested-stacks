@@ -1,4 +1,4 @@
-# Shared Resources  - these stacks include resources to be exported
+# Shared Cross-stack Resource Template Examples
 
-Shared resources are instantia
+These stacks build resources which are shared across multiple application stacks.
 
