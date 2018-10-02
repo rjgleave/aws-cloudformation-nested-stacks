@@ -6,6 +6,8 @@ Description: >-
   **WARNING** This template creates an Amazon EC2 instance. You will be billed
   for the AWS resources used if you create a stack from this template.
 Parameters:
+  # this section is added to define the shared network resources which will be imported.
+  # it must be the name of the stack which was actually instantiated, not the template name.
   NetworkStackName:
     Description: >-
       Name of an active CloudFormation stack that contains the networking
@@ -15,6 +17,7 @@ Parameters:
     MinLength: 1
     MaxLength: 255
     AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    # It is good practice to default the stack name, to document the name of the shared resource
     Default: SampleNetworkCrossStack
 Mappings:
   AWSRegionArch2AMI:
