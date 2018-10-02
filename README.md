@@ -5,13 +5,13 @@ Basic principles:
 
 Naming Conventions
 * Folder names
-⋅⋅*	All lower case
-..* Use hyphens to separate logical words and terms 
-..*	For products, lead with the application name
-..*	Examples
-....* shared-resources  (main repo for sharing patterns and templates)
-....* my-web-app (example product/application folder)
-....* resources (example sub-folder for cloudformation resources)
+  *	All lower case
+  * Use hyphens to separate logical words and terms 
+  *	For products, lead with the application name
+  *	Examples
+    * shared-resources  (main repo for sharing patterns and templates)
+    * my-web-app (example product/application folder)
+    * resources (example sub-folder for cloudformation resources)
 * Templates
 ..* All cloudformation includes the prefix – ‘cf’  (e.g. cf)
 ..* Use hyphens to separate words, names and terms (e.g. cf-)
