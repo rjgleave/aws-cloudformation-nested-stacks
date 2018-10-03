@@ -5,6 +5,19 @@ Description: >-
   **WARNING** This template creates an Amazon EC2 instance. You will be billed
   for the AWS resources used if you create a stack from this template.
 Parameters:
+  # this section is added to define the shared network resources which will be imported.
+  # it must be the name of the stack which was actually instantiated, not the template name.
+  NetworkStackName:
+    Description: >-
+      Name of an active CloudFormation stack that contains the networking
+      resources, such as the subnet and security group, that will be used in
+      this stack.
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    # It is good practice to default the stack name, to document the name of the shared resource
+    Default: SampleNetworkCrossStack
   # Parameters for EC2 Nested Stack
   InstanceType:
     Description: WebServer EC2 instance type
@@ -162,13 +175,26 @@ Resources:
         DBPassword: !Ref DBPassword
         DBAllocatedStorage: !Ref DBAllocatedStorage
         DBInstanceClass: !Ref DBInstanceClass
-        EC2SecurityGroup: !Ref EC2SecurityGroup
+        ParameterOverrides: !Sub 
+          - |
+            {
+              "EC2SecurityGroup": "${SecurityGroupID}"
+            }
+          - SecurityGroupID: 
+              'Fn::ImportValue': !Sub '${NetworkStackName}-SecurityGroupID'       
         MultiAZ: !Ref MultiAZ
       # get this url from the S3 bucket where your cloudformation templates are uploaded
       TemplateURL: >-
-        https://s3.amazonaws.com/cf-templates-8mxauch1fvup-us-east-1/2018274xpZ-cfn-AppName-ec2-web.yaml
-
-
+        https://s3.amazonaws.com/cf-templates-8mxauch1fvup-us-east-1/cfn-AppName-rds-mysql.yaml
+  SNSTopic:     # this resource is defined in the nested stack
+    Type: 'AWS::CloudFormation::Stack'  
+    Properties:
+      Parameters:    # passing the root parameters above to the nested stack
+        SubscriptionEndPoint: rjgleave@amazon.com
+        SubscriptionProtocol: email
+      # get this url from the S3 bucket where your cloudformation templates are uploaded
+      TemplateURL: >-
+        https://s3.amazonaws.com/cf-templates-8mxauch1fvup-us-east-1/20182758VF-cfn-AppName-sns-topic-support.yaml
 
 Outputs:
   # Outputs from EC2 Nested Stack
