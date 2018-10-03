@@ -18,13 +18,12 @@ Naming Conventions
     * my-web-app (example product/application folder)
     * resources (example sub-folder for cloudformation resources)
 * Templates
-  * All cloudformation includes the prefix – ‘cf’  (e.g. cf)
-  * Use hyphens to separate words, names and terms (e.g. cf-)
+  * All cloudformation includes the prefix – ‘cf’  
+  * Use hyphens to separate words, names and terms 
   * For products, include the application name in CamelCase (e.g  cf-myWebApp-)
   * Differentiate root templates by the identifier ‘main’  (e.g. cf-myWebApp-main.yaml)
-  * Nested resources include the AWS resource in lower case (e.g. cf-myWebApp-rds.yaml)
-  * Nested resources may include added details  (e.g. cf-myWebApp-rds-mysql.yaml)
-  * Shared resources should include the name ‘shared’ (e.g. cf-shared-subnet-public.yaml) 
+  * For nested resources, include the AWS resource name in lower case (e.g. cf-myWebApp-rds.yaml). Further details about the resource type may be added after the resource name (e.g. cf-myWebApp-rds-mysql.yaml)
+  * Shared resources should include the identifier ‘shared’ (e.g. cf-shared-subnet-public.yaml) 
 
 Always try to adopt a component-based approach to building cloudformation stacks.   This will provide many benefits, such as feature isolation and will also promote reusability and ease of maintenance.
 
