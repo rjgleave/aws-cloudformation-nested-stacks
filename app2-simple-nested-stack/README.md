@@ -1,5 +1,8 @@
 # Simple Nested Stack Example
-some ideas on naming conventions and how to organize cloud formation nested stacks in a folder structure
+
+Nested CloudFormation stacks consist of a root stack or top level stack that will call subordinate or child stacks as part of the deployment. These nested stacks could be deployed as a standalone stack or they can be tied together by a root stack which uses the AWS::CloudFormation::Stack resource type. 
+
+Nested stacks can be used to deploy entire environments from the individual stacks below it. In fact, some root stacks do not deploy any resources at all other than what comes from the nested stacks. 
 
 Steps for Implementing Nested Stacks:
 1. The Nested Stack  
