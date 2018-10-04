@@ -7,6 +7,19 @@ Description: 'AWS CloudFormation Sample Template RDS_MySQL_With_Read_Replica: Sa
   instance and Amazon CloudWatch alarms. You will be billed for the AWS resources
   used if you create a stack from this template.'
 Parameters:
+  # this section is added to define the shared network resources which will be imported.
+  # it must be the name of the stack which was actually instantiated, not the template name.
+  NetworkStackName:
+    Description: >-
+      Name of an active CloudFormation stack that contains the networking
+      resources, such as the subnet and security group, that will be used in
+      this stack.
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    # It is good practice to default the stack name, to document the name of the shared resource
+    Default: SampleNetworkCrossStack
   DBName:
     Default: MyDatabase
     Description: The database name
@@ -51,13 +64,6 @@ Parameters:
       db.m2.2xlarge, db.m2.4xlarge, db.cr1.8xlarge, db.t2.micro, db.t2.small, db.t2.medium,
       db.t2.large]
     ConstraintDescription: must select a valid database instance type.
-  EC2SecurityGroup:
-    Description: The EC2 security group that contains instances that need access to
-      the database
-    Default: default
-    Type: String
-    AllowedPattern: '[a-zA-Z0-9\-]+'
-    ConstraintDescription: must be a valid security group name.
   MultiAZ:
     Description: Multi-AZ master database
     Type: String
@@ -84,7 +90,9 @@ Resources:
     Condition: Is-EC2-Classic
     Properties:
       DBSecurityGroupIngress:
-        EC2SecurityGroupName: !Ref 'EC2SecurityGroup'
+        EC2SecurityGroupName: # Note: this is imported from the shared stack
+            - !ImportValue 
+              'Fn::Sub': '${NetworkStackName}-SecurityGroupID'
       GroupDescription: database access
   MasterDB:
     Type: AWS::RDS::DBInstance

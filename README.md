@@ -30,7 +30,7 @@ Always try to adopt a component-based approach to building cloudformation stacks
 The two main approaches for component based assembly which are showcased here are:
 1. Cross-stack Resource Sharing
     * Good for cases where a resource should be defined once and consumed by other resources which are dependent on it.
-    * Good examples are networking resources for a given architecture – e.g. vpc, subnet, security group.   
+    * Common examples are networking resources for a given architecture – e.g. vpc, subnet, security group.   
     * Exposed properties are exported from the component stack and imported into the consuming stack. 
     * Cross-stack resource sharing is a good practice, but should be used judiciously, as it creates tight-coupling between the component stack and those stacks which are dependent on it.  Component stacks cannot be deleted or changed without considering impacts to dependent stacks. 
 
