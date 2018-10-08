@@ -10,7 +10,7 @@ This illustrates two examples:
 
 You can import a parameter into a Cloudformation template from SSM Parameter Store by using the Cloudformation Type: 'AWS::SSM::Parameter::Value<String>' (see example below)
 
-	![Define the Shared Resource as a Parameter](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/regular-parameter.png)
+![Define the Shared Resource as a Parameter](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/regular-parameter.png)
 
 ## Example 2: Importing a secure password
 
@@ -20,4 +20,4 @@ Note: you must include the version number when importing secure strings.    This
 
 See how the value in Example 1 above is used to dynamically assemble the secure string import statement during the template build (see example below)
 
-	![Define the Shared Resource as a Parameter](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/secure-string-parameter.png)
+![Define the Shared Resource as a Parameter](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/secure-string-parameter.png)
