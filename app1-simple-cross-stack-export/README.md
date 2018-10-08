@@ -1,13 +1,11 @@
 # A Simple Example of Cross-stack Resources Sharing
-Cross-account sharing allows an instantiated stack to be consumed by other stacks. This is not an approach where you are reusing code.  You are not creating a new stack.   You are simply sharing the resource outputs of an existing stack within other stacks.
+Cross-account sharing allows an existing, instantiated stack to be consumed by other stacks. In this case you are not reusing code or creating a new stack.   You are simply pointing to a shared resource of an existing stack to reuse it.
 
 Cross-stack Resource Sharing Steps:
-1. Identify a resource which should be shared as a component for other stacks to consume.
-	* Create a cloudformation template to define the stack.  
-		* Follow the naming convention for shared resources described in Section 8.  
-		* It should be stored in the ‘shared-resources folder’.    Do not put a shared resource template in the folder belonging to any individual application, since it will be shared by multiple apps.
-	* Modify the Outputs section to include an Export section.   In the example below, four properties of shared resource stack are identified for export.
-
+1. Create a cloudformation template to define the share resource.  
+	* Follow the naming convention for shared resources described in the main ReadMe.  
+	* It should be stored in the ‘shared-resources folder’.    Do not put a shared resource template in the folder belonging to any individual application, since it will be shared by multiple apps.
+	* Modify the Outputs section of the template to include an Export section.   In the example below, four properties of shared resource stack are identified for export.
 
 	![Export Statements](https://github.com/rjgleave/aws-cloudformation-nested-stacks/blob/master/assets/exported-resources.png)
 
